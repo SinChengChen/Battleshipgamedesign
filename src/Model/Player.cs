@@ -39,7 +39,9 @@ public class Player : IEnumerable<Ship>
 	public ISeaGrid Enemy {
 		set { _enemyGrid = value; }
 	}
-
+	/// <summary>
+	/// Initializes a new instance of the <see cref="T:Player"/> class.
+	/// </summary>
 	public Player(BattleShipsGame controller)
 	{
 		_game = controller;
@@ -143,6 +145,11 @@ public class Player : IEnumerable<Ship>
 
 		return lst.GetEnumerator();
 	}
+
+	/// <summary>
+	/// IEs the numerable< ship>. get enumerator.
+	/// </summary>
+	/// <returns>The numerable< ship>. get enumerator.</returns>
 	IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
 	{
 		return GetShipEnumerator();
@@ -197,6 +204,9 @@ public class Player : IEnumerable<Ship>
 		return result;
 	}
 
+	/// <summary>
+	/// Randomizes the deployment.
+	/// </summary>
 	public virtual void RandomizeDeployment()
 	{
 		bool placementSuccessful = false;
