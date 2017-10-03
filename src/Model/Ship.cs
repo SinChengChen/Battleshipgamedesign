@@ -66,26 +66,14 @@ public class Ship
 		get { return _row; }
 	}
 
-	/// <summary>
-	/// The column location of the ship
-	/// </summary>
-	/// <value>The column.</value>
 	public int Column {
 		get { return _col; }
 	}
 
-	/// <summary>
-	/// Gets the direction of the ship
-	/// </summary>
-	/// <value>The direction.</value>
 	public Direction Direction {
 		get { return _direction; }
 	}
 
-	/// <summary>
-	/// Initializes a new instance of the <see cref="T:Ship"/> class.
-	/// </summary>
-	/// <param name="ship">Ship.</param>
 	public Ship(ShipName ship)
 	{
 		_shipName = ship;
@@ -114,9 +102,7 @@ public class Ship
 		}
 		_tiles.Clear();
 	}
-	/// <summary>
-	/// Calculate the hit taken
-	/// </summary>
+
 	public void Hit()
 	{
 		_hitsTaken = _hitsTaken + 1;
@@ -129,9 +115,7 @@ public class Ship
 	public bool IsDeployed {
 		get { return _tiles.Count > 0; }
 	}
-	/// <summary>
-	/// Gets a value indicating whether the ship is destroyed.
-	/// </summary>
+
 	public bool IsDestroyed {
 		get { return Hits == Size; }
 	}
