@@ -26,6 +26,7 @@ static class MenuController
 			"PLAY",
 			"SETUP",
 			"SCORES",
+			"HOW TO PLAY",
 			"QUIT"
 		},
 		new string[] {
@@ -55,8 +56,8 @@ static class MenuController
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
-
-	private const int MAIN_MENU_QUIT_BUTTON = 3;
+	private const int MAIN_MENU_HOWTOPLAYBUTTON = 3;
+	private const int MAIN_MENU_QUIT_BUTTON = 4;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -270,6 +271,9 @@ static class MenuController
 			case MAIN_MENU_TOP_SCORES_BUTTON:
 				GameController.AddNewState(GameState.ViewingHighScores);
 				break;
+			case MAIN_MENU_HOWTOPLAYBUTTON:
+			GameController.AddNewState (GameState.ViewHowtoplay);
+				break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;
@@ -284,10 +288,10 @@ static class MenuController
 	{
 		switch (button) {
 			case SETUP_MENU_EASY_BUTTON:
-				GameController.SetDifficulty(AIOption.Hard);
+				GameController.SetDifficulty(AIOption.Easy);
 				break;
 			case SETUP_MENU_MEDIUM_BUTTON:
-				GameController.SetDifficulty(AIOption.Hard);
+				GameController.SetDifficulty(AIOption.Medium);
 				break;
 			case SETUP_MENU_HARD_BUTTON:
 				GameController.SetDifficulty(AIOption.Hard);
@@ -318,6 +322,14 @@ static class MenuController
 				break;
 		}
 	}
+
+	public static void HandleHowtoPlayInput ()
+	{
+		if (SwinGame.MouseClicked (MouseButton.LeftButton) || SwinGame.KeyTyped (KeyCode.vk_ESCAPE) || SwinGame.KeyTyped (KeyCode.vk_RETURN)) {
+			GameController.EndCurrentState ();
+		}
+	}
+
 }
 
 //=======================================================

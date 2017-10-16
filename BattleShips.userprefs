@@ -4,14 +4,15 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="src\GameLogic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Battleshipgamedesign Status">
     <Files>
-      <File FileName="src\Model\AIPlayer.cs" Line="14" Column="40" />
-      <File FileName="src\Model\AIHardPlayer.cs" Line="209" Column="1" />
+      <File FileName="src\Model\AIPlayer.cs" Line="1" Column="1" />
+      <File FileName="src\Model\AIHardPlayer.cs" Line="1" Column="1" />
       <File FileName="src\Model\AIMediumPlayer.cs" Line="1" Column="1" />
-      <File FileName="src\GameController.cs" Line="10" Column="14" />
-      <File FileName="src\DeploymentController.cs" Line="21" Column="2" />
+      <File FileName="src\GameController.cs" Line="1" Column="1" />
+      <File FileName="src\DeploymentController.cs" Line="1" Column="1" />
       <File FileName="src\GameLogic.cs" Line="1" Column="1" />
+      <File FileName="Battleshipgamedesign Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />

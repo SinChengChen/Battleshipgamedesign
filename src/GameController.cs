@@ -309,10 +309,15 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.HandleHighScoreInput();
 				break;
+			case GameState.ViewHowtoplay:
+			MenuController.HandleHowtoPlayInput ();
+			break;
 		}
 
 				UtilityFunctions.UpdateAnimations();
 	}
+
+
 
 	/// <summary>
 	/// Draws the current state of the game to the screen.
@@ -391,7 +396,14 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+
+	internal static void HowtoPlay ()
+	{
+		GameResources.GameImage ("HowToPlay");
+	}
 }
+
+
 
 //=======================================================
 //Service provided by Telerik (www.telerik.com)
