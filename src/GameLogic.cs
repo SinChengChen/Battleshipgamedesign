@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 using SwinGameSDK;
 using Microsoft.VisualBasic;
 using System;
@@ -37,3 +38,48 @@ static class GameLogic
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+=======
+using SwinGameSDK;
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+static class GameLogic
+{
+	/// <summary>
+	/// The entry point of the program, where the program control starts and ends.
+	/// </summary>
+	public static void Main()
+	{
+		//Opens a new Graphics Window
+		SwinGame.OpenGraphicsWindow("Battle Ships", 800, 600);
+
+		//Load Resources
+		GameResources.LoadResources();
+
+
+		//SwinGame.PlayMusic(GameResources.GameMusic("Background"));
+		//SwinGame.PlaySoundEffect (GameResources.GameSound("Lose"));
+		SwinGame.PlayMusic (GameResources.GameMusic("Background"));
+
+		//Game Loop
+		do {
+			GameController.HandleUserInput();
+			GameController.DrawScreen();
+		} while (!(SwinGame.WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting));
+
+		SwinGame.StopMusic();
+
+		//Free Resources and Close Audio, to end the program.
+		GameResources.FreeResources();
+	}
+}
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================
+>>>>>>> Stashed changes
