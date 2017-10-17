@@ -38,10 +38,12 @@ static class UtilityFunctions
 	private static readonly Color SHIP_FILL_COLOR = Color.Gray;
 	private static readonly Color SHIP_OUTLINE_COLOR = Color.White;
 
-	private static readonly Color MESSAGE_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+	private static Color MESSAGE_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 	public const int ANIMATION_CELLS = 7;
 
 	public const int FRAMES_PER_CELL = 8;
+
+
 	/// <summary>
 	/// Determines if the mouse is in a given rectangle.
 	/// </summary>
@@ -183,12 +185,20 @@ static class UtilityFunctions
 			colLeft = left + (cellGap + cellWidth) * s.Column + SHIP_GAP;
 
 			if (s.Direction == Direction.LeftRight) {
-				shipName = "ShipLR" + s.Size;
+				if (GameResources.ThemeState) {
+					shipName = "ShipLR2" + s.Size;
+				} else { 
+					shipName = "ShipLR" + s.Size;
+				}
 				shipHeight = cellHeight - (SHIP_GAP * 2);
 				shipWidth = (cellWidth + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
 			} else {
 				//Up down
-				shipName = "ShipUD" + s.Size;
+				if (GameResources.ThemeState) {
+					shipName = "ShipUD2" + s.Size;
+				} else { 
+					shipName = "ShipUD" + s.Size;
+				}
 				shipHeight = (cellHeight + cellGap) * s.Size - (SHIP_GAP * 2) - cellGap;
 				shipWidth = cellWidth - (SHIP_GAP * 2);
 			}
@@ -219,6 +229,11 @@ static class UtilityFunctions
 	/// </summary>
 	public static void DrawMessage()
 	{
+		if (GameResources.ThemeState) {
+			MESSAGE_COLOR = SwinGame.RGBAColor (252, 67, 73, 255);
+		} else { 
+			MESSAGE_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+		}
 		SwinGame.DrawText(Message, MESSAGE_COLOR, GameResources.GameFont("Courier"), FIELD_LEFT, MESSAGE_TOP);
 	}
 
@@ -233,17 +248,29 @@ static class UtilityFunctions
 			case GameState.ViewingGameMenu:
 			case GameState.AlteringSettings:
 			case GameState.ViewingHighScores:
-				SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
+			if (GameResources.ThemeState) {
+				SwinGame.DrawBitmap (GameResources.GameImage ("Menu2"), 0, 0);
+			} else { 
+				SwinGame.DrawBitmap (GameResources.GameImage ("Menu"), 0, 0);
+			}
 				break;
 			case GameState.ViewHowtoplay:
 				SwinGame.DrawBitmap (GameResources.GameImage ("HowToPlay"), 0, 0);
 				break;
 			case GameState.Discovering:
 			case GameState.EndingGame:
-				SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
+			if (GameResources.ThemeState) {
+				SwinGame.DrawBitmap (GameResources.GameImage ("Discovery2"), 0, 0);
+			} else { 
+				SwinGame.DrawBitmap (GameResources.GameImage ("Discovery"), 0, 0);
+			}
 				break;
 			case GameState.Deploying:
-				SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
+			if (GameResources.ThemeState) {
+				SwinGame.DrawBitmap (GameResources.GameImage ("Deploy2"), 0, 0);
+			} else { 
+				SwinGame.DrawBitmap (GameResources.GameImage ("Deploy"), 0, 0);
+			}
 				break;
 			default:
 				SwinGame.ClearScreen();

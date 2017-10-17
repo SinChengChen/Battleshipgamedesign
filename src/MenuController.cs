@@ -21,7 +21,7 @@ static class MenuController
 	/// <remarks>
 	/// These are the text captions for the menu items.
 	/// </remarks>
-	private static readonly string[][] _menuStructure = {
+	private static readonly string [] [] _menuStructure = {
 		new string[] {
 			"PLAY",
 			"SETUP",
@@ -69,9 +69,10 @@ static class MenuController
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
 
 	private const int GAME_MENU_QUIT_BUTTON = 2;
-	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+	private static Color MENU_COLOR  = SwinGame.RGBAColor(2, 167, 252, 255);
+	private static bool check = true;
+	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor (1, 57, 86, 255);
 
-	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
 	/// <summary>
 	/// Handles the processing of user input when the main menu is showing
 	/// </summary>
@@ -79,7 +80,6 @@ static class MenuController
 	{
 		HandleMenuInput(MAIN_MENU, 0, 0);
 	}
-
 	/// <summary>
 	/// Handles the processing of user input when the main menu is showing
 	/// </summary>
@@ -277,14 +277,25 @@ static class MenuController
 			GameController.AddNewState (GameState.ViewHowtoplay);
 			break;
 			case MAIN_MENU_CHANGETHEME_BUTTON:
-			GameController.AddNewState (GameState.ChangeTheme);
+			ChangeTheme ();
 				break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;
 		}
 	}
+	public static void ChangeTheme ()
+	{
 
+	if (check) {
+			GameResources.ThemeState = true;
+			MENU_COLOR = SwinGame.RGBColor (252, 67, 73);
+		check = false;
+	} else {
+			GameResources.ThemeState = false;
+			MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
+		check = true;
+	}	}
 	/// <summary>
 	/// The setup menu was clicked, perform the button's action.
 	/// </summary>

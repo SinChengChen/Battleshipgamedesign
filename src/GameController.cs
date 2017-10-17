@@ -23,11 +23,6 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
-	private static bool _themestate;
-
-	public static bool ThemeState { 
-		get { return _themestate;}
-	}
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -293,43 +288,34 @@ public static class GameController
 		SwinGame.ProcessEvents();
 
 		switch (CurrentState) {
-			case GameState.ViewingMainMenu:
-				MenuController.HandleMainMenuInput();
-				break;
-			case GameState.ViewingGameMenu:
-				MenuController.HandleGameMenuInput();
-				break;
-			case GameState.AlteringSettings:
-				MenuController.HandleSetupMenuInput();
-				break;
-			case GameState.Deploying:
-				DeploymentController.HandleDeploymentInput();
-				break;
-			case GameState.Discovering:
-				DiscoveryController.HandleDiscoveryInput();
-				break;
-			case GameState.EndingGame:
-				EndingGameController.HandleEndOfGameInput();
-				break;
-			case GameState.ViewingHighScores:
-				HighScoreController.HandleHighScoreInput();
-				break;
-			case GameState.ViewHowtoplay:
-			MenuController.HandleHowtoPlayInput ();
+		case GameState.ViewingMainMenu:
+			MenuController.HandleMainMenuInput ();
 			break;
-			case GameState.ChangeTheme:
-			if (_themestate == false) {
-				_themestate = true;
-			} else {
-				_themestate = false;
-			}
-			MenuController.HandleMainMenuInput();
+		case GameState.ViewingGameMenu:
+			MenuController.HandleGameMenuInput ();
+			break;
+		case GameState.AlteringSettings:
+			MenuController.HandleSetupMenuInput ();
+			break;
+		case GameState.Deploying:
+			DeploymentController.HandleDeploymentInput ();
+			break;
+		case GameState.Discovering:
+			DiscoveryController.HandleDiscoveryInput ();
+			break;
+		case GameState.EndingGame:
+			EndingGameController.HandleEndOfGameInput ();
+			break;
+		case GameState.ViewingHighScores:
+			HighScoreController.HandleHighScoreInput ();
+			break;
+		case GameState.ViewHowtoplay:
+			MenuController.HandleHowtoPlayInput ();
 			break;
 		}
 
 				UtilityFunctions.UpdateAnimations();
 	}
-
 
 
 	/// <summary>
@@ -364,9 +350,6 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
 				break;
-		case GameState.ChangeTheme:
-			          MenuController.DrawMainMenu();
-			break;
 
 		}
 

@@ -7,8 +7,15 @@ using System.Diagnostics;
 using SwinGameSDK;
 
 public static class GameResources
-{
-	
+{	
+	private static bool _themestate;
+	public static bool ThemeState {
+	get {
+		return _themestate;
+	}
+	set {
+		_themestate = value;
+	}	}
 	/// <summary>
 	/// Loads the fonts.
 	/// </summary>
@@ -25,55 +32,40 @@ public static class GameResources
 	/// </summary>
 	private static void LoadImages()
 	{
-		if (GameController.ThemeState) {
-			//Backgrounds
-			NewImage ("Menu", "main_page2.jpg");
-			NewImage ("Discovery", "discover2.jpg");
-			NewImage ("Deploy", "deploy2.jpg");
-			NewImage ("HowToPlay", "gamemanual.png");
-
-			//Deployment
-			NewImage ("LeftRightButton", "2deploy_dir_button_horiz.png");
-			NewImage ("UpDownButton", "2deploy_dir_button_vert.png");
-			NewImage ("SelectedShip", "2deploy_button_hl.png");
-			NewImage ("PlayButton", "2deploy_play_button.png");
-			NewImage ("RandomButton", "2deploy_randomize_button.png");
-
-			//Ships
-			int i = 0;
-			for (i = 1; i <= 5; i++) {
-				NewImage ("ShipLR" + i, "2ship_deploy_horiz_" + i + ".png");
-				NewImage ("ShipUD" + i, "2ship_deploy_vert_" + i + ".png");
-			}
-
-			//Explosions
-			NewImage ("Explosion", "2explosion.png");
-			NewImage ("Splash", "2splash.png");
-		} else {
 			//Backgrounds
 			NewImage ("Menu", "main_page.jpg");
+			NewImage ("Menu2", "second_main_page.jpg");
 			NewImage ("Discovery", "discover.jpg");
+			NewImage ("Discovery2", "discover2.jpg");
 			NewImage ("Deploy", "deploy.jpg");
+        	NewImage ("Deploy2", "deploy2.jpg");
 			NewImage ("HowToPlay", "gamemanual.png");
+
 
 			//Deployment
 			NewImage ("LeftRightButton", "deploy_dir_button_horiz.png");
+        	NewImage ("LeftRightButton2", "2deploy_dir_button_horiz.png");
 			NewImage ("UpDownButton", "deploy_dir_button_vert.png");
+        	NewImage ("UpDownButton2", "2deploy_dir_button_vert.png");
 			NewImage ("SelectedShip", "deploy_button_hl.png");
+            NewImage ("SelectedShip2", "2deploy_button_hl.png");
 			NewImage ("PlayButton", "deploy_play_button.png");
+            NewImage ("PlayButton2", "2deploy_play_button.png");
 			NewImage ("RandomButton", "deploy_randomize_button.png");
+        	NewImage ("RandomButton2", "2deploy_randomize_button.png");
 
 			//Ships
 			int i = 0;
 			for (i = 1; i <= 5; i++) {
 				NewImage ("ShipLR" + i, "ship_deploy_horiz_" + i + ".png");
 				NewImage ("ShipUD" + i, "ship_deploy_vert_" + i + ".png");
+				NewImage ("ShipLR2" + i, "2ship_deploy_horiz_" + i + ".png");
+                NewImage ("ShipUD2" + i, "2ship_deploy_vert_" + i + ".png");
 			}
-
+			
 			//Explosions
 			NewImage ("Explosion", "explosion.png");
 			NewImage ("Splash", "splash.png");
-		}
 
 	}
 
@@ -193,7 +185,6 @@ public static class GameResources
 		SwinGame.Delay(100);
 		EndLoadingScreen(width, height);
 	}
-
 	/// <summary>
 	/// Shows the loading screen.
 	/// </summary>
