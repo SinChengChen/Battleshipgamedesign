@@ -39,7 +39,7 @@ public static class GameResources
 			NewImage ("Discovery2", "discover2.jpg");
 			NewImage ("Deploy", "deploy.jpg");
         	NewImage ("Deploy2", "deploy2.jpg");
-			NewImage ("HowToPlay", "gamemanual.png");
+			NewImage ("HowToPlay", "Manualimage.png");
 
 
 			//Deployment
