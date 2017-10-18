@@ -16,6 +16,7 @@ public static class GameController
 {
 
 	private static BattleShipsGame _theGame;
+	private static bool _flag = true;
 	private static Player _human;
 
 	private static AIPlayer _ai;
@@ -411,6 +412,16 @@ public static class GameController
 	{
 		GameResources.GameImage ("HowToPlay");
 	}
+
+	public static void ChangeMusic () {
+		//
+		if (_flag == true) {
+			SwinGame.PlayMusic (GameResources.GameMusic ("Background2"));
+			_flag = false;
+		} else {
+			SwinGame.PlayMusic (GameResources.GameMusic ("Background"));
+			_flag = true;
+		}	}
 }
 
 

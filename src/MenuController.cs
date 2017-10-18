@@ -28,6 +28,7 @@ static class MenuController
 			"SCORES",
 			"HOW TO PLAY",
 			"THEME",
+			"CHG BGM",
 			"QUIT",
 			"MUIC ON",
 			"MUIC OFF"
@@ -61,12 +62,13 @@ static class MenuController
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 	private const int MAIN_MENU_HOWTOPLAYBUTTON = 3;
 	private const int MAIN_MENU_CHANGETHEME_BUTTON = 4;
-	private const int MAIN_MENU_QUIT_BUTTON = 5;
+	private const int CHANGE_BGM_BUTTON = 5;
+	private const int MAIN_MENU_QUIT_BUTTON = 6;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
-	private const int MAIN_MENU_STARTMUSIC_BUTTON = 6;
-	private const int MAIN_MENU_STOPMUSIC_BUTTON = 7;
+	private const int MAIN_MENU_STARTMUSIC_BUTTON = 7;
+	private const int MAIN_MENU_STOPMUSIC_BUTTON = 8;
 
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
 	private const int GAME_MENU_RETURN_BUTTON = 0;
@@ -291,6 +293,9 @@ static class MenuController
 				break;
 			case MAIN_MENU_STOPMUSIC_BUTTON:
 				GameController.StopMusic();
+				break;
+			case CHANGE_BGM_BUTTON:
+				GameController.ChangeMusic ();
 				break;
 		}
 	}

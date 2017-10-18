@@ -29,6 +29,7 @@ public enum GameState
 	ViewingHighScores,
 
 	ViewHowtoplay,
+	ChangeMusic,
 	/// <summary>
 	/// The player is altering the game settings
 	/// </summary>
