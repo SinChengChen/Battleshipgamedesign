@@ -387,6 +387,16 @@ public static class GameController
 		_state.Pop();
 	}
 
+	public static void StartMusic()
+	{
+		SwinGame.PlayMusic(GameResources.GameMusic("Background"));
+	}
+
+	public static void StopMusic()
+	{
+		SwinGame.StopMusic();
+	}
+
 	/// <summary>
 	/// Sets the difficulty for the next level of the game.
 	/// </summary>
