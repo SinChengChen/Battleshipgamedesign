@@ -29,6 +29,9 @@ public enum GameState
 	ViewingHighScores,
 
 	ViewHowtoplay,
+
+	ChangeScreen,
+
 	ChangeMusic,
 	/// <summary>
 	/// The player is altering the game settings

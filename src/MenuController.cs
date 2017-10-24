@@ -25,13 +25,14 @@ static class MenuController
 		new string[] {
 			"PLAY",
 			"SETUP",
+			"SCREEN",
 			"SCORES",
 			"HOW TO PLAY",
 			"THEME",
 			"CHG BGM",
-			"QUIT",
 			"MUIC ON",
-			"MUIC OFF"
+			"MUIC OFF",
+			"QUIT"
 		},
 		new string[] {
 			"RETURN",
@@ -42,6 +43,11 @@ static class MenuController
 			"EASY",
 			"MEDIUM",
 			"HARD"
+		},
+		new string[] {
+			"Full",
+			"Original",
+			"Other"
 		}
 
 	};
@@ -55,24 +61,31 @@ static class MenuController
 	private const int TEXT_OFFSET = 0;
 	private const int MAIN_MENU = 0;
 	private const int GAME_MENU = 1;
-
 	private const int SETUP_MENU = 2;
+	private const int SCREEN_MENU = 3;
+
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
-	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
-	private const int MAIN_MENU_HOWTOPLAYBUTTON = 3;
-	private const int MAIN_MENU_CHANGETHEME_BUTTON = 4;
-	private const int CHANGE_BGM_BUTTON = 5;
-	private const int MAIN_MENU_QUIT_BUTTON = 6;
+	private const int MAIN_MENU_SCREEN_BUTTON = 2;
+	private const int MAIN_MENU_TOP_SCORES_BUTTON = 3;
+	private const int MAIN_MENU_HOWTOPLAYBUTTON = 4;
+	private const int MAIN_MENU_CHANGETHEME_BUTTON = 5;
+	private const int CHANGE_BGM_BUTTON = 6;
+	private const int MAIN_MENU_QUIT_BUTTON = 7;
+	private const int MAIN_MENU_STARTMUSIC_BUTTON = 8;
+	private const int MAIN_MENU_STOPMUSIC_BUTTON = 9;
+
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
-	private const int MAIN_MENU_STARTMUSIC_BUTTON = 7;
-	private const int MAIN_MENU_STOPMUSIC_BUTTON = 8;
-
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
+
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
+
+	private const int SCREEN_MENU_FULL_BUTTON = 0;
+	private const int SCREEN_MENU_ORIGINAL_BUTTON = 1;
+	private const int SCREEN_MENU_BIGGER_BUTTON = 2;
 
 	private const int GAME_MENU_QUIT_BUTTON = 2;
 	private static Color MENU_COLOR  = SwinGame.RGBAColor(2, 167, 252, 255);
@@ -95,6 +108,20 @@ static class MenuController
 		handled = HandleMenuInput(SETUP_MENU, 1, 1);
 
 		if (!handled) {
+			HandleMenuInput(MAIN_MENU, 0, 0);
+		}
+	}
+
+	/// <summary>
+	/// Change Screen
+	/// </summary>
+	public static void HandleScreenMenuInput()
+	{
+		bool screen = false;
+		screen = HandleMenuInput(SCREEN_MENU, 1, 1);
+
+		if (!screen)
+		{
 			HandleMenuInput(MAIN_MENU, 0, 0);
 		}
 	}
@@ -180,6 +207,12 @@ static class MenuController
 		DrawButtons(SETUP_MENU, 1, 1);
 	}
 
+	public static void DrawScreen()
+	{
+		DrawButtons(MAIN_MENU);
+		DrawButtons(SCREEN_MENU, 1, 1);
+	}
+
 	/// <summary>
 	/// Draw the buttons associated with a top level menu.
 	/// </summary>
@@ -260,6 +293,9 @@ static class MenuController
 			case GAME_MENU:
 				PerformGameMenuAction(button);
 				break;
+			case SCREEN_MENU:
+				PerformScreenMenuAction(button);
+				break;	
 		}
 	}
 
@@ -297,6 +333,9 @@ static class MenuController
 			case CHANGE_BGM_BUTTON:
 				GameController.ChangeMusic ();
 				break;
+			case MAIN_MENU_SCREEN_BUTTON:
+				GameController.AddNewState(GameState.ChangeScreen);
+				break;
 		}
 	}
 	public static void ChangeTheme ()
@@ -310,7 +349,8 @@ static class MenuController
 			GameResources.ThemeState = false;
 			MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 		check = true;
-	}	}
+	}
+	}
 	/// <summary>
 	/// The setup menu was clicked, perform the button's action.
 	/// </summary>
@@ -326,6 +366,24 @@ static class MenuController
 				break;
 			case SETUP_MENU_HARD_BUTTON:
 				GameController.SetDifficulty(AIOption.Hard);
+				break;
+		}
+		//Always end state - handles exit button as well
+		GameController.EndCurrentState();
+	}
+
+	private static void PerformScreenMenuAction(int button)
+	{
+		switch (button)
+		{
+			case SCREEN_MENU_FULL_BUTTON:
+				GameController.FullScreen();
+				break;
+			case SCREEN_MENU_ORIGINAL_BUTTON:
+				GameController.Original();
+				break;
+			case SCREEN_MENU_BIGGER_BUTTON:
+				GameController.bigger();
 				break;
 		}
 		//Always end state - handles exit button as well

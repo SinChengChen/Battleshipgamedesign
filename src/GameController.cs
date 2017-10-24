@@ -298,6 +298,9 @@ public static class GameController
 		case GameState.AlteringSettings:
 			MenuController.HandleSetupMenuInput ();
 			break;
+		case GameState.ChangeScreen:
+			MenuController.HandleScreenMenuInput();
+			break;		
 		case GameState.Deploying:
 			DeploymentController.HandleDeploymentInput ();
 			break;
@@ -339,6 +342,9 @@ public static class GameController
 			case GameState.AlteringSettings:
 				MenuController.DrawSettings();
 				break;
+			case GameState.ChangeScreen:
+				MenuController.DrawScreen();
+				break;	
 			case GameState.Deploying:
 				DeploymentController.DrawDeployment();
 				break;
@@ -396,6 +402,21 @@ public static class GameController
 	public static void StopMusic()
 	{
 		SwinGame.StopMusic();
+	}
+
+	public static void Original ()
+	{
+		SwinGame.ChangeScreenSize (800,600);
+	}
+
+	public static void bigger ()
+	{
+		SwinGame.ChangeScreenSize(800,650);
+	}
+
+	public static void FullScreen ()
+	{
+		SwinGame.ToggleFullScreen();
 	}
 
 	/// <summary>
