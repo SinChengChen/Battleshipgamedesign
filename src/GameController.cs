@@ -300,7 +300,10 @@ public static class GameController
 			break;
 		case GameState.ChangeScreen:
 			MenuController.HandleScreenMenuInput();
-			break;		
+			break;
+		case GameState.AlteringThemes:
+			MenuController.HandleThemeMenuInput ();
+			break;
 		case GameState.Deploying:
 			DeploymentController.HandleDeploymentInput ();
 			break;
@@ -357,6 +360,9 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
 				break;
+		case GameState.AlteringThemes:
+			MenuController.DrawTheme ();
+			break;
 
 		}
 

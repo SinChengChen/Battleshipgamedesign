@@ -27,22 +27,30 @@ public enum GameState
 	/// The player is looking at the high scores
 	/// </summary>
 	ViewingHighScores,
-
+	/// <summary>
+	/// The view howtoplay.
+	/// </summary>
 	ViewHowtoplay,
-
+	/// <summary>
+	/// The change screen.
+	/// </summary>
 	ChangeScreen,
-
+	/// <summary>
+	/// The change music.
+	/// </summary>
 	ChangeMusic,
 	/// <summary>
 	/// The player is altering the game settings
 	/// </summary>
 	AlteringSettings,
-
+	/// <summary>
+	/// The altering themes.
+	/// </summary>
+	AlteringThemes,
 	/// <summary>
 	/// Players are deploying their ships
 	/// </summary>
 	Deploying,
-
 	/// <summary>
 	/// Players are attempting to locate each others ships
 	/// </summary>
