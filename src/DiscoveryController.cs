@@ -11,6 +11,10 @@ using SwinGameSDK;
 /// </summary>
 static class DiscoveryController
 {
+	public static Timer GameTimer = SwinGame.CreateTimer ();
+	public static int x = 0;
+	public static uint _time;
+	public static string timestring;
 
 	/// <summary>
 	/// Handles input during the discovery phase of the game.
@@ -23,9 +27,12 @@ static class DiscoveryController
 	{
 		if (SwinGame.KeyTyped(KeyCode.vk_ESCAPE)) {
 			GameController.AddNewState(GameState.ViewingGameMenu);
+			SwinGame.PauseTimer (GameTimer);
+
 		}
 
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
+			SwinGame.ResumeTimer (GameTimer);
 			DoAttack();
 		}
 	}
@@ -61,6 +68,11 @@ static class DiscoveryController
 		const int SHOTS_TOP = 157;
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
+		if (x == 0) {
+			SwinGame.ResetTimer (GameTimer);
+			SwinGame.StartTimer (GameTimer);
+			x++;
+		}
 
 		if ((SwinGame.KeyDown(KeyCode.vk_LSHIFT) | SwinGame.KeyDown(KeyCode.vk_RSHIFT)) & SwinGame.KeyDown(KeyCode.vk_c)) {
 			UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, true);
@@ -74,6 +86,9 @@ static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
+		timestring = _time.ToString ();
+		_time = SwinGame.TimerTicks (GameTimer) / 1000;
+		SwinGame.DrawTextLines ("Time: " + timestring, Color.Blue, Color.Transparent, GameResources.GameFont ("Menu"),FontAlignment.AlignCenter,(SwinGame.ScreenWidth()/2)-350,100,450,20);
 	}
 
 }
