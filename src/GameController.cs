@@ -135,7 +135,7 @@ public static class GameController
 
 		Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
 
-			UtilityFunctions.DrawAnimationSequence();
+			//UtilityFunctions.DrawAnimationSequence();
 	}
 
 	/// <summary>
@@ -301,6 +301,9 @@ public static class GameController
 		case GameState.ChangeScreen:
 			MenuController.HandleScreenMenuInput();
 			break;
+		case GameState.About:
+			MenuController.HandleAboutMenuInput ();
+			break;
 		case GameState.AlteringThemes:
 			MenuController.HandleThemeMenuInput ();
 			break;
@@ -347,7 +350,10 @@ public static class GameController
 				break;
 			case GameState.ChangeScreen:
 				MenuController.DrawScreen();
-				break;	
+				break;
+			case GameState.About:
+				MenuController.DrawAbout ();
+				break;
 			case GameState.Deploying:
 				DeploymentController.DrawDeployment();
 				break;

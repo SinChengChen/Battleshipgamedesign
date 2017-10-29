@@ -39,6 +39,7 @@ public enum GameState
 	/// The change music.
 	/// </summary>
 	ChangeMusic,
+	About,
 	/// <summary>
 	/// The player is altering the game settings
 	/// </summary>

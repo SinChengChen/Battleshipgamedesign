@@ -27,7 +27,7 @@ static class MenuController
 			"SETUP",
 			"SCREEN",
 			"SCORES",
-			"HOW TO PLAY",
+			"ABOUT",
 			"THEME",
 			"CHG BGM",
 			"MUIC ON",
@@ -49,6 +49,10 @@ static class MenuController
 			"Original",
 			"Other"
 		},
+		new string[] {
+			"HOW TO PLAY",
+			"CREDITS"
+		},
 		new String []{
 			"RED",
 			"BLUE"
@@ -67,15 +71,16 @@ static class MenuController
 	private const int GAME_MENU = 1;
 	private const int SETUP_MENU = 2;
 	private const int SCREEN_MENU = 3;
-	private const int THEME_MENU = 4;
+	private const int ABOUT_MENU = 4;
+	private const int THEME_MENU = 5;
 
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_SCREEN_BUTTON = 2;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 3;
-	private const int MAIN_MENU_HOWTOPLAYBUTTON = 4;
+	private const int MAIN_MENU_ABOUT_BUTTON = 4;
 	private const int MAIN_MENU_THEME_BUTTON = 5;
-	private const int CHANGE_BGM_BUTTON = 6;	
+	private const int MAIN_MENU_CHANGE_BGM_BUTTON = 6;	
 	private const int MAIN_MENU_STARTMUSIC_BUTTON = 7;
 	private const int MAIN_MENU_STOPMUSIC_BUTTON = 8;
 	private const int MAIN_MENU_QUIT_BUTTON = 9;
@@ -91,6 +96,9 @@ static class MenuController
 	private const int SCREEN_MENU_FULL_BUTTON = 0;
 	private const int SCREEN_MENU_ORIGINAL_BUTTON = 1;
 	private const int SCREEN_MENU_BIGGER_BUTTON = 2;
+
+	private const int ABOUT_HOWYOPLAY_BUTTON = 0;
+	private const int ABOUT_CREDITS_BUTTON = 1;
 
 	private const int BLUE_THEME_BUTTON = 1;
 	private const int RED_THEME_BUTTON = 0;
@@ -119,6 +127,15 @@ static class MenuController
 		}
 	}
 
+	public static void HandleAboutMenuInput () {
+		bool handled = false;
+		handled = HandleMenuInput (ABOUT_MENU, 1, 4);
+
+		if (!handled) {
+			HandleMenuInput (MAIN_MENU, 0, 0);
+		}
+	}
+
 	/// <summary>
 	/// Change Screen
 	/// </summary>
@@ -135,7 +152,7 @@ static class MenuController
 	public static void HandleThemeMenuInput () {
 
 		bool handled = false;
-		handled = HandleMenuInput (THEME_MENU, 1, 4);
+		handled = HandleMenuInput (THEME_MENU, 1, 5);
 		if (!handled) {
 			HandleMenuInput (MAIN_MENU, 0, 0);
 		}
@@ -222,6 +239,11 @@ static class MenuController
 		DrawButtons(SETUP_MENU, 1, 1);
 	}
 
+	public static void DrawAbout () {
+		DrawButtons (MAIN_MENU);
+        DrawButtons (ABOUT_MENU, 1, 4);
+	}
+
 	public static void DrawScreen()
 	{
 		DrawButtons(MAIN_MENU);
@@ -230,7 +252,7 @@ static class MenuController
 	public static void DrawTheme ()
 	{ 
         DrawButtons (MAIN_MENU);
-		DrawButtons (THEME_MENU, 1, 4);
+		DrawButtons (THEME_MENU, 1, 5);
 	}
 
 	/// <summary>
@@ -316,9 +338,12 @@ static class MenuController
 			case SCREEN_MENU:
 				PerformScreenMenuAction(button);
 				break;
-		case THEME_MENU:
-			PerformThemeMenuAction (button);
-			break;
+			case ABOUT_MENU:
+				PerformAboutMenuAction (button);
+				break;
+			case THEME_MENU:
+				PerformThemeMenuAction (button);
+				break;
 		}
 	}
 
@@ -338,11 +363,11 @@ static class MenuController
 			case MAIN_MENU_TOP_SCORES_BUTTON:
 				GameController.AddNewState(GameState.ViewingHighScores);
 				break;
-			case MAIN_MENU_HOWTOPLAYBUTTON:
-			GameController.AddNewState (GameState.ViewHowtoplay);
+			case MAIN_MENU_ABOUT_BUTTON:
+				GameController.AddNewState(GameState.About);
 			break;
 			case MAIN_MENU_THEME_BUTTON:
-			GameController.AddNewState (GameState.AlteringThemes);
+				GameController.AddNewState (GameState.AlteringThemes);
 				break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
@@ -353,7 +378,7 @@ static class MenuController
 			case MAIN_MENU_STOPMUSIC_BUTTON:
 				GameController.StopMusic();
 				break;
-			case CHANGE_BGM_BUTTON:
+			case MAIN_MENU_CHANGE_BGM_BUTTON:
 				GameController.ChangeMusic ();
 				break;
 			case MAIN_MENU_SCREEN_BUTTON:
@@ -409,6 +434,16 @@ static class MenuController
 		case RED_THEME_BUTTON:
 			GameResources.ThemeState = true;
 			MENU_COLOR = SwinGame.RGBColor (252, 67, 73);
+			break;
+		}
+	}
+
+	private static void PerformAboutMenuAction (int button) {
+		switch (button) {
+			case ABOUT_HOWYOPLAY_BUTTON:
+				GameController.AddNewState (GameState.ViewHowtoplay);
+			break;
+		case ABOUT_CREDITS_BUTTON:
 			break;
 		}
 	}

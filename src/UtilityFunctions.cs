@@ -249,6 +249,7 @@ static class UtilityFunctions
 			case GameState.AlteringSettings:
 			case GameState.ViewingHighScores:
 			case GameState.AlteringThemes:
+			case GameState.About:
 			if (GameResources.ThemeState) {
 				SwinGame.DrawBitmap (GameResources.GameImage ("Menu2"), 0, 0);
 			} else { 
@@ -288,7 +289,7 @@ static class UtilityFunctions
 	/// <param name="col">Col.</param>
 	public static void AddExplosion(int row, int col)
 	{
-		AddAnimation(row, col, "Splash");
+		AddAnimation(row, col, "Explosion");
 	}
 
 	public static void AddSplash(int row, int col)
