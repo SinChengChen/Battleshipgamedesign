@@ -444,6 +444,7 @@ static class MenuController
 				GameController.AddNewState (GameState.ViewHowtoplay);
 			break;
 		case ABOUT_CREDITS_BUTTON:
+			GameController.AddNewState (GameState.ViewCredits);
 			break;
 		}
 	}
@@ -472,6 +473,12 @@ static class MenuController
 
 	public static void HandleHowtoPlayInput ()
 	{
+		if (SwinGame.MouseClicked (MouseButton.LeftButton) || SwinGame.KeyTyped (KeyCode.vk_ESCAPE) || SwinGame.KeyTyped (KeyCode.vk_RETURN)) {
+			GameController.EndCurrentState ();
+		}
+	}
+
+	public static void HandleCredits () {
 		if (SwinGame.MouseClicked (MouseButton.LeftButton) || SwinGame.KeyTyped (KeyCode.vk_ESCAPE) || SwinGame.KeyTyped (KeyCode.vk_RETURN)) {
 			GameController.EndCurrentState ();
 		}

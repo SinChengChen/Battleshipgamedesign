@@ -40,6 +40,7 @@ public enum GameState
 	/// </summary>
 	ChangeMusic,
 	About,
+	ViewCredits,
 	/// <summary>
 	/// The player is altering the game settings
 	/// </summary>

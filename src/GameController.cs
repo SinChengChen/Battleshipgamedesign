@@ -322,6 +322,9 @@ public static class GameController
 		case GameState.ViewHowtoplay:
 			MenuController.HandleHowtoPlayInput ();
 			break;
+		case GameState.ViewCredits:
+			MenuController.HandleCredits ();
+			break;
 		}
 
 				UtilityFunctions.UpdateAnimations();
