@@ -250,12 +250,14 @@ static class UtilityFunctions
 			case GameState.ViewingHighScores:
 			case GameState.AlteringThemes:
 			case GameState.About:
-			case GameState.ChangeScreen:
 			if (GameResources.ThemeState) {
 				SwinGame.DrawBitmap (GameResources.GameImage ("Menu2"), 0, 0);
 			} else { 
 				SwinGame.DrawBitmap (GameResources.GameImage ("Menu"), 0, 0);
 			}
+				break;
+			case GameState.ChangeScreen:	
+				SwinGame.DrawBitmap (GameResources.GameImage ("Screen"), 0, 0);
 				break;
 			case GameState.ViewHowtoplay:
 				SwinGame.DrawBitmap (GameResources.GameImage ("HowToPlay"), 0, 0);

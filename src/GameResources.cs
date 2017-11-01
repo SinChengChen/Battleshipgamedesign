@@ -41,6 +41,7 @@ public static class GameResources
         	NewImage ("Deploy2", "deploy2.jpg");
 			NewImage ("HowToPlay", "Manualimage.jpg");
 			NewImage ("Credits", "credits.png");
+			NewImage ("Screen", "second_main_page.jpg");
 
 
 			//Deployment
