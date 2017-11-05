@@ -285,6 +285,18 @@ public static class GameController
 	/// </remarks>
 	public static void HandleUserInput()
 	{
+		if (SwinGame.KeyTyped(KeyCode.vk_s))
+		{
+			if (Audio.MusicVolume() > 0)
+			{
+				Audio.SetMusicVolume(0);
+			}
+			else
+			{
+				Audio.SetMusicVolume(1);
+			}
+		}
+
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
