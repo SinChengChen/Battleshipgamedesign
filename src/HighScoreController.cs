@@ -194,12 +194,16 @@ static class HighScoreController
 			}
 
 			s.Name = SwinGame.TextReadAsASCII ();
+			if (s.Name == "") {
+				SwinGame.StartReadingText (Color.White, 10000, GameResources.GameFont ("Courier"), x, ENTRY_TOP);
+				SwinGame.DrawText ("Name: ", Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, ENTRY_TOP);
 
-			_Scores.RemoveAt (_Scores.Count - 1);
-			_Scores.Add (s);
-			_Scores.Sort ();
-			SaveScores ();
-
+			} else {
+				_Scores.RemoveAt (_Scores.Count - 1);
+				_Scores.Add (s);
+				_Scores.Sort ();
+				SaveScores ();
+			}
 			GameController.EndCurrentState ();
 		}
 	}
