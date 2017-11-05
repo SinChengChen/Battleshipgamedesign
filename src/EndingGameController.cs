@@ -32,7 +32,7 @@ static class EndingGameController
 			HighScoreController.ShowScore ();
 
 		}
-		SwinGame.DrawTextLines ("Time: " + DiscoveryController.timestring,Color.Blue,Color.Transparent, GameResources.GameFont ("ArialLarge"), FontAlignment.AlignCenter, 0, 300, SwinGame.ScreenWidth(), SwinGame.ScreenHeight ());
+		SwinGame.DrawTextLines ("Time Used: " + DiscoveryController.timestring + " seconds",Color.White,Color.Transparent, GameResources.GameFont ("MenuLarge"), FontAlignment.AlignCenter, 0, 450, SwinGame.ScreenWidth(), SwinGame.ScreenHeight ());
 	}
 
 	/// <summary>

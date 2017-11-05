@@ -86,9 +86,9 @@ static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
-		timestring = _time.ToString ();
 		_time = SwinGame.TimerTicks (GameTimer) / 1000;
-		SwinGame.DrawTextLines ("Time: " + timestring, Color.Blue, Color.Transparent, GameResources.GameFont ("Menu"),FontAlignment.AlignCenter,(SwinGame.ScreenWidth()/2)-350,100,450,20);
+		timestring = _time.ToString ();
+		SwinGame.DrawTextLines ("Time: " + timestring, Color.White, Color.Transparent, GameResources.GameFont ("MenuLarge"),FontAlignment.AlignCenter,(SwinGame.ScreenWidth()/2)-350,100,450,20);
 	}
 
 }
