@@ -69,6 +69,7 @@ public static class GameResources
 			//Explosions
 			NewImage ("Explosion", "burn.png");
 			NewImage ("Splash", "splash.png");
+			NewImage ("Burst", "burst.png");
 
 	}
 

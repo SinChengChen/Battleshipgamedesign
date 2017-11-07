@@ -33,7 +33,7 @@ static class UtilityFunctions
 	private static readonly Color LARGE_SHIP = Color.Gray;
 	private static readonly Color LARGE_MISS = SwinGame.RGBAColor(1, 147, 220, 255);
 
-	private static readonly Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 255);
+	private static readonly Color LARGE_HIT = SwinGame.RGBAColor(252, 2, 3, 100);
 	private static readonly Color OUTLINE_COLOR = SwinGame.RGBAColor(5, 55, 88, 255);
 	private static readonly Color SHIP_FILL_COLOR = Color.Gray;
 	private static readonly Color SHIP_OUTLINE_COLOR = Color.White;
@@ -162,6 +162,9 @@ static class UtilityFunctions
 
 				if (draw) {
 					SwinGame.FillRectangle(fillColor, colLeft, rowTop, cellWidth, cellHeight);
+					if (fillColor == LARGE_HIT) {
+						SwinGame.DrawBitmap (GameResources.GameImage ("Burst"), colLeft, rowTop);
+					}
 					if (!small) {
 						SwinGame.DrawRectangle(OUTLINE_COLOR, colLeft, rowTop, cellWidth, cellHeight);
 					}
